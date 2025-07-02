@@ -1,17 +1,18 @@
+import Link from "next/link";
 
 
 const Header = () => {
     return (
         <div className="header">
-            <h1>Tom's Programming</h1>
+            <h1>Tom&apos;s Programming</h1>
             <p>A collection of interesting programming topics, tips, and discoveries</p>
             <nav>
                 <ul>
                     <li>
-                        <a href="/">Home</a>
+                        <Link href="/">Home</Link>
                     </li>
                     <li>
-                        <a href="/about">About</a>
+                        <Link href="/about">About</Link>
                     </li>
                 </ul>
             </nav>
