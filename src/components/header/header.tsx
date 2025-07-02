@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Header = () => {
     return (
-        <div className="header">
+        <header className="header" aria-label="Site Header">
             <h1>Tom&apos;s Programming</h1>
             <p>A collection of interesting programming topics, tips, and discoveries</p>
             <nav>
