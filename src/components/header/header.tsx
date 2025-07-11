@@ -43,7 +43,7 @@ const Header = () => {
   const toggleMenu = () => setMenuOpen((open) => !open);
 
   return (
-    <header className={styles.header} role="banner">
+    <header className={styles.header}>
       <div className={styles.leftContainer}>
         <div className={styles.titleContainer}>
           <h1 className={styles.pageTitle}>Tom&apos;s Programming</h1>
