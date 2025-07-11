@@ -1,12 +1,25 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --header-bg: #181818;
+  --header-border: #333;
+  --header-text: #fff;
+  --header-accent: #555;
+
+  --primary: #181818;
+  --accent: #0070f3;
+  --text: #222;
+  --radius: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
   }
 }
 
@@ -35,8 +48,3 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}

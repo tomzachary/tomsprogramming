@@ -1,29 +1,63 @@
+'use client'
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./header.module.scss";
 import Button from "../button/button";
 
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+];
+
+const MenuToggle = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => void }) => (
+  <button
+    className={styles.menuButton}
+    aria-label="Toggle navigation"
+    aria-expanded={isOpen}
+    onClick={onToggle}
+  >
+    &#9776;
+  </button>
+);
+
+const Navigation = ({ isOpen }: { isOpen: boolean }) => (
+  <nav
+    className={styles.nav}
+    aria-label="Main Navigation"
+    aria-hidden={!isOpen}
+  >
+    <ul className={`${styles.navList} ${isOpen ? styles.open : ""}`}>
+      {NAV_ITEMS.map((item) => (
+        <li key={item.href}>
+          <Link href={item.href}>{item.label}</Link>
+        </li>
+      ))}
+    </ul>
+  </nav>
+);
+
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen((open) => !open);
+
   return (
-    <header className={styles.header} aria-label="Site Header">
+    <header className={styles.header}>
       <div className={styles.leftContainer}>
         <div className={styles.titleContainer}>
           <h1 className={styles.pageTitle}>Tom&apos;s Programming</h1>
-          <h2 className={styles.pageSubtitle}>
+          <p className={styles.pageSubtitle}>
             Random thoughts on programming, tech, and life
-          </h2>
+          </p>
         </div>
-        <nav className={styles.nav} aria-label="Main Navigation">
-          <ul className={styles.navList}>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/about">About</Link>
-            </li>
-          </ul>
-        </nav>
+        <MenuToggle isOpen={menuOpen} onToggle={toggleMenu} />
+        <Navigation isOpen={menuOpen} />
       </div>
-
       <div className={styles.accountContainer}>
         <Button className={styles.loginButton}>Login</Button>
         <Button className={styles.signupButton}>Sign Up</Button>
