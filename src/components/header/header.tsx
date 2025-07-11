@@ -26,7 +26,11 @@ const MenuToggle = ({ isOpen, onToggle }: { isOpen: boolean; onToggle: () => voi
 );
 
 const Navigation = ({ isOpen }: { isOpen: boolean }) => (
-  <nav className={styles.nav} aria-label="Main Navigation">
+  <nav
+    className={styles.nav}
+    aria-label="Main Navigation"
+    aria-hidden={!isOpen}
+  >
     <ul className={`${styles.navList} ${isOpen ? styles.open : ""}`}>
       {NAV_ITEMS.map((item) => (
         <li key={item.href}>
